@@ -1,0 +1,23 @@
+{
+  "name": "discord-speak-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josh-hernandez-exe/discord-speak-bot.git"
+  },
+  "author": "Joshua Hernandez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/josh-hernandez-exe/discord-speak-bot/issues"
+  },
+  "homepage": "https://github.com/josh-hernandez-exe/discord-speak-bot#readme",
+  "dependencies": {
+    "discord.io": "^2.5.3",
+    "google-tts-api": "0.0.2"
+  }
+}
