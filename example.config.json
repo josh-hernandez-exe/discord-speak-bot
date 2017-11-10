@@ -3,7 +3,7 @@
 		"client": {
 			"id": "YOUR CLIENT ID HERE",
 			"secret": "YOUR CLIENT SECRET HERE"
-		}
-
+		},
+		"token": "YOUR TOKEN HERE"
 	}
 }
