@@ -13,6 +13,7 @@ function has(obj, propString) {
   for(const value of propList) {
     if(curObj === null || typeof curObj !== 'object') {
       doesHave = false;
+      break;
     }
     curObj = curObj[value];
   }
