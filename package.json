@@ -19,6 +19,8 @@
   "homepage": "https://github.com/josh-hernandez-exe/discord-speak-bot#readme",
   "dependencies": {
     "discord.io": "^2.5.3",
-    "google-tts-api": "0.0.2"
+    "google-tts-api": "0.0.2",
+    "request": "^2.83.0",
+    "request-promise-native": "^1.0.5"
   }
 }
