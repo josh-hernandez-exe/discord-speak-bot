@@ -119,9 +119,10 @@ function main() {
     }
   }
 
-  const botUserTag = `<@${bot.id}>`;
+  let botUserTag = '';
   
   bot.on('ready', function(event) {
+    botUserTag = `<@${bot.id}>`;
     console.log('Logged in as %s - %s\n', bot.username, bot.id);
     console.log();
     console.log('Please auth the app');
