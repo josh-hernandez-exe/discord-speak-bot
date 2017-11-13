@@ -66,6 +66,7 @@ function say(bot,state,line) {
     speed = Number.parseInt(args.speed);
   }
   if(args.lang !== undefined) {
+    // https://cloud.google.com/speech/docs/languages
     languageCode = args.lang;
   }
   if(args.channel !== undefined) {
