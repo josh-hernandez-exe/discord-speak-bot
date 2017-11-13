@@ -92,20 +92,17 @@ function say(bot,state,line) {
     bot.getAudioContext(voiceChannelID, (error, stream) => {
       if (error) return reject(error);
 
-      const tempFile = '/tmp/temp.mp3';
+      request.get(url)
+        .on('response', (response) => {
+          if (response.statusCode !== 200) return reject();
+          console.log('[debug][say][response]');
 
-      request
-        .get(url)
+          //Without {end: false}, it would close up the stream, so make sure to include that.
+          response.pipe(stream,{end: false});
+        })
         .on('error', (err) => {
           if (err) return reject(err);
-        })
-        // .pipe(stream);
-        .pipe(fs.createWriteStream(tempFile))
-        // .pipe(stream,{end: false});
-      //Without {end: false}, it would close up the stream, so make sure to include that.
-
-      fs.createReadStream(tempFile).pipe(stream, {end: false});
-      // fs.createReadStream(tempFile).pipe(stream);
+        });
 
       stream.on('done', resolve);
       stream.on('error', (error) => {
