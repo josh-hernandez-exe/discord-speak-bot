@@ -100,9 +100,6 @@ function say(bot,state,line) {
         });
 
       stream.on('done', resolve);
-      stream.on('error', (error) => {
-        if (error) return reject(error);
-      });
     });
   }));
 }
