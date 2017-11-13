@@ -6,16 +6,10 @@ const request = require('request');
 const config = require('./config');
 const utils = require('./utils');
 
-if (!(
-  utils.has(config,'discord.token') &&
-  utils.has(config,'discord.client.id')
-)) {
+if (!utils.has(config,'discord.token')) {
   console.log("Config does not have all the information needed.");
   process.exit()
 }
-
-const botUserTag = `<@${config.discord.client.id}>`;
-
 
 function ping(bot,textChannelID) {
   return new Promise((resolve,reject) => {
@@ -52,7 +46,7 @@ function join(bot,state,line) {
 }
 
 function say(bot,state,line) {
-  let languageCode ='en';
+  let languageCode ='en-US';
   let speed = 1;
   let voiceChannelID = state.voice.current;
   line = line.substring('say'.length,line.length).trim();
@@ -125,22 +119,21 @@ function main() {
     }
   }
 
+  const botUserTag = `<@${bot.id}>`;
   
   bot.on('ready', function(event) {
     console.log('Logged in as %s - %s\n', bot.username, bot.id);
     console.log();
     console.log('Please auth the app');
-    if (utils.has(config,'discord.client.id')) {
-      console.log(`https://discordapp.com/oauth2/${
-        [
-          'authorize',
-          `client_id=${config.discord.client.id}`,
-          'scope=bot',
-          'permissions=0',
-          'response_type=code',
-        ].join('&')
-      }`);
-    }
+    console.log(`https://discordapp.com/oauth2/${
+      [
+        'authorize',
+        `client_id=${bot.id}`,
+        'scope=bot',
+        'permissions=0',
+        'response_type=code',
+      ].join('&')
+    }`);
   });
 
   bot.on('message', function(user, userID, channelID, message, event) {
